@@ -1,0 +1,73 @@
+
+// theme colors
+$primary: #326dee;
+$secondary: #1ac888;
+$button-default-color: blue;
+$error: #d32752;
+$info: #f6c31c;
+
+// color palette
+$colors: (
+    "primary": $primary,
+    "secondary": $secondary,
+    "error": $error,
+    "info": $info,
+    "blue": #1919e6,
+    "red": #e61919,
+    "yellow": #e6e619,
+    "green": #19e635,
+    "orange": #ffa600,
+    "purple": #9900ff,
+    "gray": #808080,
+    "black": black,
+    "white": white,
+);
+
+
+// spacing
+$base-padding: 0.75rem;
+$base-margin: 0.75rem;
+
+// line height
+
+$base-line-height: 1.5;
+
+// borders
+$base-border-thickness: 1px;
+$base-border-radius: 8px;
+$base-border-math: 20px;
+
+// font sizes
+
+$base-font-size: 1rem; // 16px
+$font-size-sm: $base-font-size * 0.75;
+$font-size-lg: $base-font-size * 1.5;
+$font-size-xl: $base-font-size * 2;
+$font-size-xxl: $base-font-size * 3;
+
+// box shadow
+
+$base-box-shadow: 0px 0px 4px $primary;
+
+
+
+/*
+@debug map-get($colors, "purple"); // result: #9900ff
+@debug map-has-key($colors, "secondary"); // result:  true
+@debug map-has-key($colors, "tertiary"); // result: false 
+@debug map-remove($colors, "orange"); // result: orange will be remove in color pallette
+@debug map-merge($colors, ("pink": #ffc0cb));
+
+*/
+
+/*
+scss code: 
+.test-btn {
+    background-color: map-get($colors, "purple");
+}
+
+css output:
+.test-btn {
+  background-color: #9900ff;
+}
+*/

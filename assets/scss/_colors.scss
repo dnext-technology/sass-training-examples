@@ -1,0 +1,79 @@
+
+
+@each $key, $val in $colors {
+
+    // create basic color variations
+    .text-#{$key} { // .text-red{}
+        color: $val;
+    }
+    .bg-#{$key} {
+        background-color: $val;
+        padding: $base-padding;
+        display:inline-block;
+    }
+
+    // create hover variations
+
+    .text-hover-#{$key} {
+        &:hover{
+            color: mix(white, $val, 50);
+        }
+    }
+
+   // create light and dark color variations
+
+    @if(#{$key} != 'black' and #{$key} != 'white'){
+        // light variations
+        @for $i from 1 through 9 {
+            .text-#{$key}-light-#{$i} {
+                color: mix(white, $val, $i * 10);
+            }
+            .bg-#{$key}-light-#{$i} {
+                background-color: mix(white, $val, $i * 10);
+            }
+        }
+
+        // dark variations
+        @for $i from 1 through 9 {
+            .text-#{$key}-dark-#{$i} {
+                color: mix(black, $val, $i * 10);
+            }
+            .bg-#{$key}-dark-#{$i} {
+                background-color: mix(black, $val, $i * 10);
+            }
+            
+        }
+        
+    } // it will be ignore black and white when we're creating the light and dark colors
+}
+
+/*
+
+scss input:
+@if (10 > 5){ // true
+    .test-if{
+        color: black;
+    }
+}
+
+css output:
+.test-if {
+    color: black;
+} 
+
+scss input:
+@if (10 < 5){ // false
+    .test-if{
+        color: black;
+    }
+} @else { // true
+    .else-condition {
+        color: white;
+    }
+}
+
+css output:
+.else-condition {
+    color: black;
+} 
+*/

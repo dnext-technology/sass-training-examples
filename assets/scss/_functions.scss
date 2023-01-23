@@ -1,0 +1,5 @@
+@function light-comp($color) {
+    $complement: complement($color); // complement returning RGB complement of a given color.
+    $light-complement: darken($complement, 35%);
+    @return $light-complement;
+}

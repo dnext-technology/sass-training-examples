@@ -1,0 +1,65 @@
+@use 'sass:math';
+
+$utilities: (
+    "padding": (
+        "prefix": "p",
+        "values": (
+            "0": 0,
+            "1": $base-padding,
+            "2": $base-padding * 2,
+            "3": $base-padding * 4,
+            "4": $base-padding * 6,
+            "5": $base-padding * 8,
+        )
+    ),
+    "padding-left": (  // property we can add all css properties here and we can create thousands variations
+        "prefix": "pl",
+        "values": (
+            "0": 0,
+            "1": $base-padding,
+            "2": $base-padding * 2,
+            "3": $base-padding * 4,
+            "4": $base-padding * 6,
+            "5": $base-padding * 8,
+        )
+    ),
+    "font-size": (
+        "prefix": "font",
+        "values": (
+            "sm": $font-size-sm,
+            "md": $base-font-size,
+            "lg": $font-size-lg,
+            "xl": $font-size-xl,
+            "xxl": $font-size-xxl
+        )
+    ),
+    "line-height": (
+        "prefix": "lh",
+        "values": (
+            "sm": $base-line-height,
+            "md": $base-line-height * 0.2,
+            "lg": $base-line-height * 0.4,
+            "xl": $base-line-height * 0.6,
+            "xxl": $base-line-height * 5
+        )
+    )
+);
+
+// generate utility classes
+
+@each $property, $map in $utilities { // property is presenting utility keys // map is force in object
+    $prefix: map-get($map, "prefix"); // map is including prefix and value. we're selecting which key we will use
+    $values: map-get($map, "values");
+    
+    @each $k, $v in $values {
+        @if($k == "default"){
+            .#{$prefix} { //
+                #{$property}: $v;
+            }
+        } @else { 
+            .#{$prefix}-#{$k} {   // prefix is our short allias for example, font-xxl or lh-xxl 
+                #{$property}: $v;
+            }
+        }
+    }
+}
